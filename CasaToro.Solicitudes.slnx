@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CasaToro.Solicitudes.API/CasaToro.Solicitudes.API.csproj" />
+  <Project Path="CasaToro.Solicitudes.Application/CasaToro.Solicitudes.Application.csproj" />
+  <Project Path="CasaToro.Solicitudes.Domain/CasaToro.Solicitudes.Domain.csproj" />
+  <Project Path="CasaToro.Solicitudes.Infrastructure/CasaToro.Solicitudes.Infrastructure.csproj" />
+</Solution>
