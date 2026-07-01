@@ -9,3 +9,4 @@ C:\Users\maico\CasaToro.Solicitudes\CasaToro.Solicitudes.Domain\obj\Debug\net10.
 C:\Users\maico\CasaToro.Solicitudes\CasaToro.Solicitudes.Domain\obj\Debug\net10.0\refint\CasaToro.Solicitudes.Domain.dll
 C:\Users\maico\CasaToro.Solicitudes\CasaToro.Solicitudes.Domain\obj\Debug\net10.0\CasaToro.Solicitudes.Domain.pdb
 C:\Users\maico\CasaToro.Solicitudes\CasaToro.Solicitudes.Domain\obj\Debug\net10.0\ref\CasaToro.Solicitudes.Domain.dll
+C:\Users\maico\CasaToro.Solicitudes\CasaToro.Solicitudes.Domain\obj\Debug\net10.0\CasaToro.Solicitudes.Domain.sourcelink.json

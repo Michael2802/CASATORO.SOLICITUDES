@@ -1,41 +1,57 @@
+using CasaToro.Solicitudes.Application.Interfaces;
+using CasaToro.Solicitudes.Application.Services;
+using CasaToro.Solicitudes.Infrastructure;
+using CasaToro.Solicitudes.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// ═══════════════════════════════════════════════
+// 1. BASE DE DATOS
+// Registra el DbContext con la cadena de conexión
+// ═══════════════════════════════════════════════
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// ═══════════════════════════════════════════════
+// 2. REPOSITORIOS
+// Cada vez que alguien pida ISolicitudRepository
+// .NET entrega un SolicitudRepository
+// ═══════════════════════════════════════════════
+builder.Services.AddScoped<ISolicitudRepository, SolicitudRepository>();
+builder.Services.AddScoped<ISeguimientoRepository, SeguimientoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+// ═══════════════════════════════════════════════
+// 3. SERVICIOS
+// Cada vez que alguien pida ISolicitudService
+// .NET entrega un SolicitudService
+// ═══════════════════════════════════════════════
+builder.Services.AddScoped<ISolicitudService, SolicitudService>();
+
+// ═══════════════════════════════════════════════
+// 4. CONTROLLERS Y SWAGGER
+// Swagger es la interfaz visual para probar la API
+// ═══════════════════════════════════════════════
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ═══════════════════════════════════════════════
+// 5. MIDDLEWARE
+// Swagger solo disponible en desarrollo
+// ═══════════════════════════════════════════════
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CasaToro.Solicitudes.Domain\CasaToro.Solicitudes.Domain.csproj" />
+    <ProjectReference Include="..\CasaToro.Solicitudes.Application\CasaToro.Solicitudes.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

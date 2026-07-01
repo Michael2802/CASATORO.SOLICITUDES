@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CasaToro.Solicitudes.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6ad46b3c0963a817bfc811307854d21fed4ed5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CasaToro.Solicitudes.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CasaToro.Solicitudes.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
